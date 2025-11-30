@@ -1,0 +1,12 @@
+money = int(input())
+coin10 = money // 10
+money %= 10
+coin5 = money // 5
+money %= 5
+coin2 = money // 2
+money %= 2
+coin1 = money
+print("10 = ",coin10)
+print("5 = ",coin5)
+print("2 = ",coin2)
+print("1 = ",coin1)

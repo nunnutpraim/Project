@@ -1,0 +1,5 @@
+one = int(input())
+two = int(input())
+three = int(input())
+max = max(one,two,three)
+print(max)

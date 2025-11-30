@@ -1,0 +1,36 @@
+text = input()
+text_lower = text.lower()
+n = len(text)
+
+# กรณีที่มีคำว่า BUU (ไม่สนพิมพ์เล็ก/ใหญ่)
+max_u = 0
+found = False
+
+for i in range(n):
+    if text_lower[i] == 'b':
+        count_u = 0
+        j = i + 1
+        while j < n and text_lower[j] == 'u':
+            count_u += 1
+            j += 1
+        if count_u >= 2:
+            found = True
+            max_u = max(max_u, count_u)
+
+if found:
+    print(f"Yes {max_u}")
+
+else:
+    # ถ้ามี B หรือ b
+    if 'b' in text_lower:
+        idx = text_lower.index('b')
+        result = text[:idx+1] + 'U' * (n - idx - 1)
+        print(result)
+
+    else:
+        # ไม่มี B เลย → พิมพ์ BUU วนจนครบความยาว
+        pattern = "BUU"
+        result = ""
+        for i in range(n):
+            result += pattern[i % 3]
+        print(result)
