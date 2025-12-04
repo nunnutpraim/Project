@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
     //get = รับค่า
     const name = req.query.name
     res.json({
-        name: "Hello World"
+        name: "Hello " + name
     })
 })
 
