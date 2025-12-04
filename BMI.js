@@ -8,21 +8,24 @@ app.use(cors())
 
 app.get("/BMI", (req, res) => {
     //get = รับค่า
-    const hight = req.query.hight
-    const weight = req.query.weight
-
-
+    const hight = Number(req.query.hight)
+    const weight = Number(req.query.weight)
     x = weight / (hight/100)**2
-
-    if (x <= 18.4) {
+    if((!isNaN(hight)) && (!isNaN(weight))){
+        
+        if (x <= 18.4) {
         result = "ผอม" // Underweight
-    } else if (x > 18.5 || x < 22.9) {
+        } else if (x > 18.5 && x < 22.9) {
         result = "สมส่วน" // Normal/Ideal
-    } else if (x > 23 || x < 24.9) {
+        } else if (x > 23 && x < 24.9) {
         result = "ท้วม" // Overweight (Mild)
-    } else {
+        } else {
         result = "อ้วน" // Obese
+        }
+    }else{
+        return res.json({ result: "error" })
     }
+        
 
     res.json({
             result: result,
