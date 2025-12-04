@@ -10,9 +10,11 @@ app.get("/plus", (req, res) => {
     //get = รับค่า
     const a = Number(req.query.a)
     const b = Number(req.query.b)
-
-    const result = a + b
-
+    if ((!isNaN(a)) && (!isNaN(b))) {
+        return res.json({ result: a + b })
+    } else {
+        return res.json({ result: "error" })
+    }
     res.json({
             result: result
     })
@@ -23,8 +25,12 @@ app.get("/minus", (req, res) => {
     const a = Number(req.query.a)
     const b = Number(req.query.b)
 
-    result = a - b
-
+    if ((!isNaN(a)) && (!isNaN(b))) {
+        return res.json({result : a - b})
+    } else {
+        return res.json({ result: "error" })
+    }
+    
     res.json({
             result: result,
     })
@@ -35,7 +41,11 @@ app.get("/multiply", (req, res) => {
     const a = Number(req.query.a)
     const b = Number(req.query.b)
 
-    result = a * b
+    if ((!isNaN(a)) && (!isNaN(b))) {
+        return res.json({result :a * b})
+    } else {
+        return res.json({ result: "error" })
+    }
 
     res.json({
             result: result,
@@ -47,7 +57,11 @@ app.get("/divide", (req, res) => {
     const a = Number(req.query.a)
     const b = Number(req.query.b)
 
-    result = a / b
+    if ((!isNaN(a)) && (!isNaN(b))) {
+        return res.json({result : a / b})
+    } else {
+        return res.json({ result: "error" })
+    }    
 
     res.json({
             result: result,
