@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: grey;">
+    <h1>About Me</h1>
+    <hr>
+    <center>
+    <h2 id = "name"></h2>
+    <br>
+    <br>
+    <h3 id = "Age"></h3>
+    <br>
+    <h3 id = "Sport"></h3>
+    <br>
+    <h3 id = "Food"></h3>
+    <img  width="300" height="250"  src="fired chicken.jpg" alt="">
+    <br>
+    <h3 id = "Hobbie"></h3>
+    <br>
+    <h3 id = "National"></h3>
+    </center>
+
+</body>
+    <script>
+    fetch('http://localhost:3000/me').then(res =>{
+        const response = res.json();
+        return response;
+    }).then(data=>{
+        const Name = document.getElementById("name");
+        Name.innerText = data.Name;
+        const Age = document.getElementById("Age");
+        Age.innerText = data.Age;
+        const Sport = document.getElementById("Sport");
+        Sport.innerText = data.Sport;
+        const Food = document.getElementById("Food");
+        Food.innerText = data.Food;
+        const Hobbie = document.getElementById("Hobbie");
+        Hobbie.innerText = data.Hobbie;
+        const National = document.getElementById("National");
+        National.innerText = data.National;
+    })
+    </script>
+</html>
